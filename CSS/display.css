@@ -1,0 +1,74 @@
+.container {
+    max-width: 850px;
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin: 0px auto;
+    padding: 20px 2.5vw 5px 2.5vw;
+}
+
+@media (max-width: 550px) {
+    .container {
+        width: 92vw;
+    }
+    
+    
+}
+
+@media (min-width: 551px) {
+     .container {
+        width: 80vw;
+        font-size: 22px;
+    }
+    .invite b{
+      font-size: 32px;
+    }
+    .title strong{
+        font-size: 28px;
+    }
+    .HANNA_content .details .first{
+        padding-top:5%;
+        padding-left: 10%;
+
+    }
+    .invite{
+        font-size: 28px;
+        font-weight: 900;
+        padding-top: 20px;
+    }
+    .moment{
+        border-radius: 10px;
+    }
+    .details span{
+        font-size: 22px;
+    }
+    
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 70vw;
+        font-size: 25px;
+    }
+    .invite b{
+      font-size: 36px;
+    }
+    .title strong{
+        font-size: 32px;
+    }
+    .HANNA_content .details .first{
+        padding-left: 30%;
+    }
+    .invite{
+        font-size: 32px;
+        font-weight: 900;
+        padding-top: 20px;
+    }
+    .moment{
+        border-radius: 10px;
+    }
+}
+
+
+
