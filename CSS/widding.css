@@ -574,8 +574,6 @@ hr {
 input:focus,
 textarea:focus {
     border: 1px solid transparent;
-    background: linear-gradient(#111, #111) padding-box,
-                linear-gradient(45deg, #ff69b4, #ffb6c1) border-box;
     box-shadow: 0 0 18px rgba(255, 105, 180, 0.4);
     transform: translateY(-2px) scale(1.02);
 }
