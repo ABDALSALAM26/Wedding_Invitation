@@ -1,3 +1,15 @@
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll(".hidden").forEach(el => {
+    observer.observe(el);
+});
+
 const weddingDate = new Date("August 4, 2026 00:00:00");
 const endWeddingDay = new Date("August 5, 2026 00:00:00");
 
