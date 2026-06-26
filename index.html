@@ -1,256 +1,323 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
 
   <title>Wedding Intro</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;600&display=swap"
-    rel="stylesheet">
+        rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      overflow: hidden;
-      background:
-        radial-gradient(circle at center,
-          rgba(255, 0, 120, .15),
-          transparent 50%),
-        #040208;
+    body{
 
-      font-family: "Cormorant Garamond", serif;
-    }
-
-    #intro {
-      width: 100vw;
-      height: 100vh;
-
-      position: relative;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .intro-text {
-
-      position: absolute;
-      z-index: 999;
-
-      text-align: center;
-
-      opacity: 0;
-      transform: scale(.8);
-
-      transition: all 1.5s ease;
-
-      padding: clamp(20px, 4vw, 45px);
-
-      width: min(90vw, 560px);
-
-      background: rgba(255, 255, 255, .05);
-
-      backdrop-filter: blur(16px);
-
-      border-radius: 30px;
-
-      border: 1px solid rgba(255,255,255,.12);
-
-      box-shadow:
-        0 0 50px rgba(255, 80, 150, .18);
-    }
-
-    .intro-text.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .nice-day {
-
-      font-family: "Cormorant Garamond", serif;
-
-      font-size: clamp(26px, 4vw, 42px);
-
-      color: #fff;
-
-      letter-spacing: 6px;
-
-      margin-bottom: 20px;
-    }
-
-    .wedding-date {
-
-      font-size: clamp(24px, 5vw, 48px);
-
-      color: #ff8ab7;
-
-      margin-bottom: 25px;
-
-      letter-spacing: 4px;
-    }
-
-    .names {
-
-      display: flex;
-
-      justify-content: center;
-      align-items: center;
-
-      flex-wrap: wrap;
-
-      gap: 12px;
-    }
-
-    .name {
-
-      font-family: "Allura", cursive;
-
-      color: white;
-
-      font-size: clamp(42px, 7vw, 78px);
-    }
-
-    .ampersand {
-
-      color: #ff4d8f;
-
-      font-family: "Allura", cursive;
-
-      font-size: clamp(48px, 8vw, 82px);
-    }
-
-    .show-btn {
-
-      position: absolute;
-
-      bottom: 8%;
-
-      z-index: 1000;
-
-      opacity: 0;
-
-      transform: translateY(30px);
-
-      transition: 1s ease;
-    }
-
-    .show-btn.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .show-btn button {
-
-      border: none;
-
-      color: white;
-
-      cursor: pointer;
-
-      padding: 18px 55px;
-
-      border-radius: 60px;
-
-      font-size: 18px;
-
-      letter-spacing: 4px;
+      overflow:hidden;
 
       background:
-        linear-gradient(135deg,
-          rgba(255, 60, 140, .5),
-          rgba(255, 150, 200, .25));
+      radial-gradient(circle at center,
+      rgba(255,0,120,.18),
+      transparent 45%),
 
-      backdrop-filter: blur(10px);
+      radial-gradient(circle at bottom,
+      rgba(255,80,160,.12),
+      transparent 60%),
 
-      box-shadow:
-        0 0 40px rgba(255, 80, 150, .45);
+      #04010a;
 
-      transition: .4s;
+      font-family:
+      "Cormorant Garamond",
+      serif;
     }
 
-    .show-btn button:hover {
-      transform: scale(1.06);
+    #intro{
+
+      position:relative;
+
+      width:100vw;
+      height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    canvas{
+
+      position:absolute;
+      inset:0;
+
+      width:100%;
+      height:100%;
+    }
+
+    .intro-text{
+
+      position:absolute;
+
+      z-index:100;
+
+      width:min(90vw,580px);
+
+      text-align:center;
+
+      padding:
+      clamp(25px,4vw,45px);
+
+      opacity:0;
+
+      transform:
+      translateY(30px)
+      scale(.85);
+
+      transition:
+      all 1.5s ease;
+
+      background:
+      rgba(255,255,255,.06);
+
+      backdrop-filter:
+      blur(18px);
+
+      -webkit-backdrop-filter:
+      blur(18px);
+
+      border:
+      1px solid
+      rgba(255,255,255,.15);
+
+      border-radius:35px;
 
       box-shadow:
-        0 0 60px rgba(255,80,150,.8);
+      0 0 60px
+      rgba(255,80,160,.25),
+
+      inset 0 0 25px
+      rgba(255,255,255,.05);
     }
+
+    .intro-text.visible{
+
+      opacity:1;
+
+      transform:
+      translateY(0)
+      scale(1);
+    }
+
+    .nice-day{
+
+      color:white;
+
+      letter-spacing:6px;
+
+      font-size:
+      clamp(24px,4vw,42px);
+
+      margin-bottom:18px;
+    }
+
+    .wedding-date{
+
+      color:#ff7cb6;
+
+      font-size:
+      clamp(30px,5vw,52px);
+
+      margin-bottom:22px;
+    }
+
+    .names{
+
+      display:flex;
+
+      justify-content:center;
+      align-items:center;
+
+      flex-wrap:wrap;
+
+      gap:15px;
+    }
+
+    .name{
+
+      color:white;
+
+      font-family:"Allura",cursive;
+
+      font-size:
+      clamp(46px,8vw,86px);
+    }
+
+    .ampersand{
+
+      color:#ff4d90;
+
+      font-family:"Allura",cursive;
+
+      font-size:
+      clamp(50px,8vw,92px);
+    }
+
+    .show-btn{
+
+      position:absolute;
+
+      bottom:8%;
+
+      z-index:150;
+
+      opacity:0;
+
+      transform:
+      translateY(25px);
+
+      transition:1.2s;
+    }
+
+    .show-btn.visible{
+
+      opacity:1;
+
+      transform:
+      translateY(0);
+    }
+
+    .show-btn button{
+
+      border:none;
+
+      cursor:pointer;
+
+      color:white;
+
+      letter-spacing:4px;
+
+      font-size:18px;
+
+      padding:18px 60px;
+
+      border-radius:60px;
+
+      background:
+      linear-gradient(135deg,
+      rgba(255,80,160,.5),
+      rgba(255,255,255,.12));
+
+      box-shadow:
+      0 0 40px
+      rgba(255,80,160,.6);
+
+      backdrop-filter:
+      blur(10px);
+
+      transition:.4s;
+    }
+
+    .show-btn button:hover{
+
+      transform:
+      scale(1.06);
+
+      box-shadow:
+      0 0 65px
+      rgba(255,80,160,.95);
+    }
+
   </style>
+
 </head>
 
 <body>
 
-  <div id="intro">
+<div id="intro">
 
-    <canvas id="canvas"></canvas>
+  <canvas id="canvas"></canvas>
 
-    <div class="intro-text" id="intro-text">
+  <div class="intro-text"
+       id="intro-text">
 
-      <div class="nice-day">
-        SAVE THE DATE
-      </div>
-
-      <div class="wedding-date">
-        4 / 8 / 2026
-      </div>
-
-      <div class="names">
-        <span class="name">Mohamed</span>
-        <span class="ampersand">&</span>
-        <span class="name">Asmaa</span>
-      </div>
-
+    <div class="nice-day">
+      SAVE THE DATE
     </div>
 
-    <div class="show-btn" id="show-btn">
-      <button onclick="showInvitation()">
-        SHOW INVITATION
-      </button>
+    <div class="wedding-date">
+      4 / 8 / 2026
+    </div>
+
+    <div class="names">
+
+      <span class="name">
+        Mohamed
+      </span>
+
+      <span class="ampersand">
+        &
+      </span>
+
+      <span class="name">
+        Asmaa
+      </span>
+
     </div>
 
   </div>
 
-  <script>
-    const canvas = document.getElementById("canvas");
+  <div class="show-btn"
+       id="show-btn">
+
+    <button onclick="showInvitation()">
+      SHOW INVITATION
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+  const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+
+  buildHeart();
 }
 
-resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
 
 const cx = () => canvas.width / 2;
 const cy = () => canvas.height / 2;
 
 let frame = 0;
 let textShown = false;
-let heartLines = [];
 let animId;
+
+let heartPaths = [];
+let particles = [];
 
 function heartPoint(t, scale) {
 
   return {
-    x: cx() + scale * 16 * Math.pow(Math.sin(t), 3),
 
-    y: cy() -
+    x:
       scale *
+      16 *
+      Math.pow(Math.sin(t), 3),
+
+    y:
+      -scale *
       (
         13 * Math.cos(t)
         - 5 * Math.cos(2 * t)
@@ -262,12 +329,12 @@ function heartPoint(t, scale) {
 
 function buildHeart() {
 
-  heartLines = [];
+  heartPaths = [];
 
   const scale =
-    Math.min(canvas.width, canvas.height) / 32;
+    Math.min(canvas.width, canvas.height) / 38;
 
-  for (let i = 0; i < 1800; i++) {
+  for (let i = 0; i < 1600; i++) {
 
     const t1 = Math.random() * Math.PI * 2;
     const t2 = Math.random() * Math.PI * 2;
@@ -275,7 +342,7 @@ function buildHeart() {
     const p1 = heartPoint(t1, scale);
     const p2 = heartPoint(t2, scale);
 
-    heartLines.push({
+    heartPaths.push({
 
       x1: p1.x,
       y1: p1.y,
@@ -283,54 +350,82 @@ function buildHeart() {
       x2: p2.x,
       y2: p2.y,
 
-      alpha: Math.random(),
+      curveX:
+        (Math.random() - .5) * scale * 15,
 
-      width: .3 + Math.random() * .8,
+      curveY:
+        (Math.random() - .5) * scale * 15,
 
-      color:
-        `hsla(${330 + Math.random()*20},
-        100%,
-        ${70 + Math.random()*20}%,
-        .9)`
+      width:
+        .3 + Math.random() * 1.2,
+
+      alpha:
+        .08 + Math.random() * .3,
+
+      hue:
+        330 + Math.random() * 25
+    });
+  }
+}
+
+function buildParticles() {
+
+  particles = [];
+
+  for (let i = 0; i < 180; i++) {
+
+    particles.push({
+
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+
+      r: Math.random() * 3 + .5,
+
+      speed: .2 + Math.random() * .8,
+
+      alpha: Math.random()
     });
   }
 }
 
 buildHeart();
+buildParticles();
+  function drawParticles() {
 
-function drawParticles() {
+  particles.forEach(p => {
 
-  for(let i=0;i<4;i++){
+    p.y -= p.speed;
 
-    const x=Math.random()*canvas.width;
-    const y=Math.random()*canvas.height;
+    if (p.y < -10) {
+
+      p.y = canvas.height + 10;
+      p.x = Math.random() * canvas.width;
+    }
 
     ctx.beginPath();
 
-    ctx.fillStyle="rgba(255,120,180,.25)";
+    ctx.fillStyle =
+      `rgba(255,120,180,${p.alpha})`;
 
-    ctx.arc(x,y,Math.random()*2.2,0,Math.PI*2);
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = "#ff4d90";
+
+    ctx.arc(
+      p.x,
+      p.y,
+      p.r,
+      0,
+      Math.PI * 2
+    );
 
     ctx.fill();
-  }
+  });
 }
 
-function animate() {
-
-  animId=requestAnimationFrame(animate);
-
-  frame++;
-
-  ctx.fillStyle="rgba(4,2,8,.08)";
-  ctx.fillRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
+function drawHeart() {
 
   const pulse =
-    1 + Math.sin(frame * .03) * .02;
+    1 + Math.sin(frame * 0.04) * 0.03;
 
   ctx.save();
 
@@ -338,34 +433,70 @@ function animate() {
 
   ctx.scale(pulse, pulse);
 
-  ctx.translate(-cx(), -cy());
-
-  heartLines.forEach(l => {
+  heartPaths.forEach(line => {
 
     ctx.beginPath();
 
-    ctx.strokeStyle = l.color;
-
-    ctx.lineWidth = l.width;
-
     ctx.globalAlpha =
-      .25 + Math.sin(frame * .02) * .1;
+      line.alpha +
+      Math.sin(frame * 0.02) * 0.05;
 
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = l.color;
+    ctx.lineWidth = line.width;
 
-    ctx.moveTo(l.x1, l.y1);
+    ctx.strokeStyle =
+      `hsla(${line.hue},
+      100%,
+      72%,
+      1)`;
 
-    ctx.lineTo(l.x2, l.y2);
+    ctx.shadowBlur = 18;
+    ctx.shadowColor =
+      `hsla(${line.hue},
+      100%,
+      72%,
+      1)`;
+
+    ctx.moveTo(line.x1, line.y1);
+
+    ctx.quadraticCurveTo(
+
+      line.curveX,
+      line.curveY,
+
+      line.x2,
+      line.y2
+    );
 
     ctx.stroke();
   });
 
   ctx.restore();
 
+  ctx.globalAlpha = 1;
+}
+
+function animate() {
+
+  animId =
+    requestAnimationFrame(animate);
+
+  frame++;
+
+  ctx.fillStyle =
+    "rgba(4,1,10,0.08)";
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
   drawParticles();
 
-  if(frame > 120 && !textShown){
+  drawHeart();
+
+  if (frame > 90 && !textShown) {
 
     textShown = true;
 
@@ -379,19 +510,19 @@ function animate() {
         .getElementById("show-btn")
         .classList.add("visible");
 
-    }, 700);
+    }, 800);
   }
 }
 
 animate();
 
-function showInvitation(){
+function showInvitation() {
 
   const intro =
     document.getElementById("intro");
 
   intro.style.transition =
-    "opacity .9s ease";
+    "opacity .8s ease";
 
   intro.style.opacity = "0";
 
@@ -402,8 +533,8 @@ function showInvitation(){
     window.location.href =
       "main.html";
 
-  }, 900);
-    }
-    </script>
+  }, 800);
+  }
+  </script>
 </body>
 </html>
