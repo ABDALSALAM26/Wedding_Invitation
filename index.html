@@ -2,350 +2,545 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wedding Intro</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;600&display=swap"
-    rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Intro</title>
 
-    body {
-      background: #0a0a0a;
-      overflow: hidden;
-      font-family: "Cormorant Garamond", serif;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
 
-    #intro {
-      position: relative;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      background: #0a0a0a;
-    }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    canvas {
-      position: relative;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
+    body {
+      overflow: hidden;
+      font-family: "Outfit", sans-serif;
 
-    .intro-text {
-      position: absolute;
-      z-index: 10;
-      text-align: center;
-      opacity: 0;
-      transform: scale(0.85);
-      transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
-      pointer-events: none;
-    }
+      background:
+        radial-gradient(circle at top,
+          rgba(255, 107, 157, 0.15),
+          transparent 35%),
 
-    .intro-text.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
+        radial-gradient(circle at bottom,
+          rgba(255, 255, 255, 0.05),
+          transparent 40%),
 
-    .nice-day {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(36px, 8vw, 72px);
-      color: #fff;
-      text-shadow:
-        0 0 30px rgba(255, 180, 80, 0.8),
-        0 0 60px rgba(255, 100, 50, 0.4);
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
+        #050505;
+    }
 
-    .wedding-date {
-      font-size: clamp(16px, 3.5vw, 26px);
-      color: #f0c080;
-      letter-spacing: 6px;
-      font-weight: 300;
-      margin-bottom: 30px;
-      text-shadow: 0 0 20px rgba(255, 180, 80, 0.5);
-    }
+    #intro {
+      position: relative;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
+    }
 
-    .names {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(10px, 3vw, 30px);
-    }
+    canvas {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
 
-    .name {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(28px, 6vw, 58px);
-      color: #fff;
-      text-shadow: 0 0 25px rgba(120, 200, 255, 0.7);
-    }
+    .intro-text {
+      position: absolute;
+      z-index: 10;
+      text-align: center;
+      opacity: 0;
+      transform: scale(.85);
+      transition: all 1.2s ease;
+      pointer-events: none;
 
-    .ampersand {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(32px, 7vw, 64px);
-      color: #ff6b9d;
-      text-shadow: 0 0 30px rgba(255, 107, 157, 0.9);
-      animation: pulse-amp 2s infinite;
-    }
+      padding: 30px 40px;
 
-    @keyframes pulse-amp {
+      background: rgba(255, 255, 255, .05);
 
-      0%,
-      100% {
-        transform: scale(1);
-      }
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
 
-      50% {
-        transform: scale(1.15);
-      }
-    }
+      border: 1px solid rgba(255, 255, 255, .1);
 
-    .show-btn {
-      position: absolute;
-      z-index: 10;
-      opacity: 0;
-      margin: auto;
-      transform: translateY(20px);
-      transition:
-        opacity 1s ease 0.5s,
-        transform 1s ease 0.5s;
-      pointer-events: none;
-    }
+      border-radius: 30px;
 
-    .show-btn.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-    }
+      box-shadow:
+        0 8px 32px rgba(255, 107, 157, .15);
+    }
 
-    .show-btn button {
-      background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
-      color: #fff;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(14px, 3vw, 18px);
-      letter-spacing: 4px;
-      padding: 14px 40px;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      backdrop-filter: blur(6px);
-      background: rgba(255, 255, 255, 0.05);
-    }
+    .intro-text.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
 
-    .show-btn button:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #fff;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-      transform: scale(1.05);
-    }
-  </style>
+    .nice-day {
+      font-family: "Allura", cursive;
+      font-size: clamp(44px, 8vw, 82px);
+      color: white;
+      text-shadow: 0 0 25px rgba(255, 107, 157, .8);
+      margin-bottom: 15px;
+    }
+
+    .wedding-date {
+      font-size: clamp(15px, 3vw, 24px);
+      color: #ffd6e0;
+      letter-spacing: 6px;
+      margin-bottom: 25px;
+    }
+
+    .names {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .name {
+      font-family: "Allura", cursive;
+      font-size: clamp(34px, 6vw, 62px);
+      color: white;
+    }
+
+    .ampersand {
+      font-family: "Allura", cursive;
+      font-size: clamp(38px, 7vw, 70px);
+      color: #ff6b9d;
+      animation: pulse-amp 2s infinite;
+    }
+
+    @keyframes pulse-amp {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    .show-btn {
+      position: absolute;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+      pointer-events: none;
+    }
+
+    .show-btn.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .show-btn button {
+
+      padding: 15px 45px;
+
+      border-radius: 50px;
+
+      border: 1px solid rgba(255,255,255,.15);
+
+      background:
+      linear-gradient(135deg,
+      rgba(255,107,157,.2),
+      rgba(255,255,255,.05));
+
+      color: white;
+
+      font-family: "Outfit", sans-serif;
+
+      letter-spacing: 4px;
+
+      cursor: pointer;
+
+      transition: .4s;
+
+      backdrop-filter: blur(10px);
+    }
+
+    .show-btn button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 30px rgba(255,107,157,.35);
+    }
+  </style>
 </head>
 
 <body>
-  <div id="intro">
-    <canvas id="canvas"></canvas>
 
-    <div class="intro-text" id="intro-text">
-      <div class="nice-day">Nice Day</div>
-      <div class="wedding-date">4 / 8 / 2026</div>
-      <div class="names">
-        <span class="name">Mohamed</span>
-        <span class="ampersand">&</span>
-        <span class="name">Asmaa</span>
-      </div>
-    </div>
+  <div id="intro">
 
-    <div class="show-btn" id="show-btn">
-      <button onclick="showInvitation()">Show Invitation</button>
-    </div>
-  </div>
+    <canvas id="canvas"></canvas>
 
-  <script>
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
+    <div class="intro-text" id="intro-text">
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+      <div class="nice-day">
+        Save The Date
+      </div>
+
+      <div class="wedding-date">
+        4 / 8 / 2026
+      </div>
+
+      <div class="names">
+        <span class="name">Mohamed</span>
+        <span class="ampersand">&</span>
+        <span class="name">Asmaa</span>
+      </div>
+
+    </div>
+
+    <div class="show-btn" id="show-btn">
+      <button onclick="showInvitation()">
+        SHOW INVITATION
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-    const colors = [
-      "#ff6b6b",
-      "#ffd93d",
-      "#6bcb77",
-      "#4d96ff",
-      "#ff6bcd",
-      "#ff9f43",
-      "#a29bfe",
-      "#00cec9",
-      "#fd79a8",
-      "#55efc4",
-      "#fdcb6e",
-      "#74b9ff",
-    ];
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
 
-    const cx = () => canvas.width / 2;
-    const cy = () => canvas.height / 2;
+const cx = () => canvas.width / 2;
+const cy = () => canvas.height / 2;
 
-    let lines = [];
-    let frame = 0;
-    let phase = "chaos";
-    let textShown = false;
+let lines = [];
+let frame = 0;
+let phase = "chaos";
+let textShown = false;
 
-    function spawnLine() {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 2 + Math.random() * 4;
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      return {
-        x: cx(),
-        y: cy(),
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        color,
-        alpha: 1,
-        trail: [],
-        life: 0,
-        maxLife: 60 + Math.random() * 80,
-      };
-    }
+function getColor() {
+  return `hsla(${330 + Math.random() * 25},100%,75%,1)`;
+}
 
-    function heartPoint(t, scale) {
-      const x = cx() + scale * 16 * Math.pow(Math.sin(t), 3);
-      const y =
-        cy() -
-        scale *
-        (13 * Math.cos(t) -
-          5 * Math.cos(2 * t) -
-          2 * Math.cos(3 * t) -
-          Math.cos(4 * t));
-      return {x, y};
-    }
+function spawnLine() {
 
-    let heartLines = [];
-    function buildHeart() {
-      const scale = Math.min(canvas.width, canvas.height) / 28;
-      for (let i = 0; i < 80; i++) {
-        const t = (i / 80) * Math.PI * 2;
-        const p = heartPoint(t, scale);
-        const t2 = ((i + 1) / 80) * Math.PI * 2;
-        const p2 = heartPoint(t2, scale);
-        heartLines.push({
-          x1: p.x,
-          y1: p.y,
-          x2: p2.x,
-          y2: p2.y,
-          color: colors[i % colors.length],
-          progress: 0,
-          speed: 0.03 + Math.random() * 0.04,
-        });
-      }
-    }
+  const angle = Math.random() * Math.PI * 2;
+  const speed = 2 + Math.random() * 4;
 
-    let animId;
-    function animate() {
-      animId = requestAnimationFrame(animate);
-      ctx.fillStyle = "rgba(10,10,10,0.18)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      frame++;
+  return {
+    x: cx(),
+    y: cy(),
 
-      if (phase === "chaos") {
-        if (frame % 2 === 0 && lines.length < 120) lines.push(spawnLine());
+    vx: Math.cos(angle) * speed,
+    vy: Math.sin(angle) * speed,
 
-        lines.forEach((l, idx) => {
-          l.trail.push({x: l.x, y: l.y});
-          if (l.trail.length > 18) l.trail.shift();
-          l.x += l.vx;
-          l.y += l.vy;
-          l.vx *= 0.995;
-          l.vy *= 0.995;
-          l.life++;
-          l.alpha = 1 - l.life / l.maxLife;
+    color: getColor(),
 
-          for (let i = 1; i < l.trail.length; i++) {
-            ctx.beginPath();
-            ctx.strokeStyle = l.color;
-            ctx.globalAlpha = (i / l.trail.length) * l.alpha;
-            ctx.lineWidth = 1.5 + (i / l.trail.length) * 2;
-            ctx.moveTo(l.trail[i - 1].x, l.trail[i - 1].y);
-            ctx.lineTo(l.trail[i].x, l.trail[i].y);
-            ctx.stroke();
-          }
-          ctx.globalAlpha = 1;
-          if (l.life >= l.maxLife) lines.splice(idx, 1);
-        });
+    alpha: 1,
+    trail: [],
 
-        if (frame > 210) {
-          phase = "form";
-          lines = [];
-          buildHeart();
-        }
-      } else if (phase === "form") {
-        let done = 0;
-        heartLines.forEach((l) => {
-          if (l.progress < 1) l.progress = Math.min(1, l.progress + l.speed);
-          else done++;
+    life: 0,
+    maxLife: 60 + Math.random() * 80
+  };
+}
 
-          const px = l.x1 + (l.x2 - l.x1) * l.progress;
-          const py = l.y1 + (l.y2 - l.y1) * l.progress;
+function heartPoint(t, scale) {
 
-          ctx.beginPath();
-          ctx.strokeStyle = l.color;
-          ctx.globalAlpha = 0.9;
-          ctx.lineWidth = 2.5;
-          ctx.moveTo(l.x1, l.y1);
-          ctx.lineTo(px, py);
-          ctx.stroke();
-          ctx.globalAlpha = 1;
-        });
+  const x =
+    cx() +
+    scale * 16 * Math.pow(Math.sin(t), 3);
 
-        if (done === heartLines.length && !textShown) {
-          textShown = true;
-          phase = "text";
-          setTimeout(() => {
-            document.getElementById("intro-text").classList.add("visible");
-setTimeout(() => {
-              document.getElementById("show-btn").classList.add("visible");
-            }, 800);
-          }, 400);
-        }
-      } else if (phase === "text") {
-        heartLines.forEach((l) => {
-          const glow = 0.6 + 0.3 * Math.sin(frame * 0.05);
-          ctx.beginPath();
-          ctx.strokeStyle = l.color;
-          ctx.globalAlpha = glow;
-          ctx.lineWidth = 2.5;
-          ctx.moveTo(l.x1, l.y1);
-          ctx.lineTo(l.x2, l.y2);
-          ctx.stroke();
-          ctx.globalAlpha = 1;
-        });
-      }
-    }
+  const y =
+    cy() -
+    scale *
+    (
+      13 * Math.cos(t)
+      - 5 * Math.cos(2 * t)
+      - 2 * Math.cos(3 * t)
+      - Math.cos(4 * t)
+    );
 
-    animate();
-    function showInvitation() {
-      const intro = document.getElementById("intro");
-      intro.style.transition = "opacity 0.8s ease";
-      intro.style.opacity = "0";
-      cancelAnimationFrame(animId);
-      setTimeout(() => {
-        window.location.href = "main.html";
-      }, 800);
-    }
-  </script>
+  return { x, y };
+}
+
+let heartLines = [];
+
+function buildHeart() {
+
+  heartLines = [];
+
+  const scale =
+    Math.min(
+      canvas.width,
+      canvas.height
+    ) / 24;
+
+  for (let i = 0; i < 240; i++) {
+
+    const t1 = Math.random() * Math.PI * 2;
+    const t2 = t1 + (Math.random() - 0.5) * 0.7;
+
+    const p1 = heartPoint(t1, scale);
+    const p2 = heartPoint(t2, scale);
+
+    heartLines.push({
+
+      x1: p1.x,
+      y1: p1.y,
+
+      x2: p2.x,
+      y2: p2.y,
+
+      color: getColor(),
+
+      progress: 0,
+
+      speed:
+        0.01 + Math.random() * 0.025,
+
+      curve:
+        (Math.random() - 0.5) * 220
+    });
+  }
+}
+
+let animId;
+
+function animate() {
+
+  animId = requestAnimationFrame(animate);
+
+  ctx.fillStyle = "rgba(5,5,5,0.14)";
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  frame++;
+
+  // المرحلة الأولى: خطوط عشوائية
+  if (phase === "chaos") {
+
+    if (
+      frame % 2 === 0 &&
+      lines.length < 120
+    ) {
+      lines.push(spawnLine());
+    }
+
+    lines.forEach((l, idx) => {
+
+      l.trail.push({
+        x: l.x,
+        y: l.y
+      });
+
+      if (l.trail.length > 18)
+        l.trail.shift();
+
+      l.x += l.vx;
+      l.y += l.vy;
+
+      l.vx *= 0.995;
+      l.vy *= 0.995;
+
+      l.life++;
+
+      l.alpha =
+        1 - l.life / l.maxLife;
+
+      for (
+        let i = 1;
+        i < l.trail.length;
+        i++
+      ) {
+
+        ctx.beginPath();
+
+        ctx.strokeStyle = l.color;
+
+        ctx.globalAlpha =
+          (i / l.trail.length) *
+          l.alpha;
+
+        ctx.lineWidth =
+          1.5 +
+          (i / l.trail.length) * 2;
+
+        ctx.moveTo(
+          l.trail[i - 1].x,
+          l.trail[i - 1].y
+        );
+
+        ctx.lineTo(
+          l.trail[i].x,
+          l.trail[i].y
+        );
+
+        ctx.stroke();
+      }
+
+      ctx.globalAlpha = 1;
+
+      if (l.life >= l.maxLife)
+        lines.splice(idx, 1);
+    });
+
+    if (frame > 220) {
+
+      phase = "form";
+      lines = [];
+
+      buildHeart();
+    }
+  }
+
+  // المرحلة الثانية: تكوين القلب
+  else if (phase === "form") {
+
+    let done = 0;
+
+    heartLines.forEach((l) => {
+
+      if (l.progress < 1) {
+
+        l.progress = Math.min(
+          1,
+          l.progress + l.speed
+        );
+
+      } else {
+        done++;
+      }
+
+      const endX =
+        l.x1 +
+        (l.x2 - l.x1) * l.progress;
+
+      const endY =
+        l.y1 +
+        (l.y2 - l.y1) * l.progress;
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = l.color;
+
+      ctx.globalAlpha = 0.85;
+
+      ctx.lineWidth = 1.8;
+
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = l.color;
+
+      ctx.moveTo(l.x1, l.y1);
+
+      ctx.quadraticCurveTo(
+        cx() + l.curve,
+        cy() - l.curve,
+        endX,
+        endY
+      );
+
+      ctx.stroke();
+
+      ctx.globalAlpha = 1;
+    });
+
+    if (
+      done === heartLines.length &&
+      !textShown
+    ) {
+
+      textShown = true;
+      phase = "text";
+
+      setTimeout(() => {
+
+        document
+          .getElementById("intro-text")
+          .classList.add("visible");
+
+        setTimeout(() => {
+
+          document
+            .getElementById("show-btn")
+            .classList.add("visible");
+
+        }, 800);
+
+      }, 400);
+    }
+  }
+
+  // المرحلة الأخيرة: القلب ينبض
+  else if (phase === "text") {
+
+    const pulse =
+      Math.sin(frame * 0.05);
+
+    heartLines.forEach((l) => {
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = l.color;
+
+      ctx.globalAlpha =
+        0.7 + pulse * 0.2;
+
+      ctx.lineWidth =
+        1.8 + pulse * 0.4;
+
+      ctx.shadowBlur = 22;
+      ctx.shadowColor = l.color;
+
+      ctx.moveTo(l.x1, l.y1);
+
+      ctx.quadraticCurveTo(
+        cx() + l.curve,
+        cy() - l.curve,
+        l.x2,
+        l.y2
+      );
+
+      ctx.stroke();
+
+      ctx.globalAlpha = 1;
+    });
+  }
+}
+
+animate();
+
+function showInvitation() {
+
+  const intro =
+    document.getElementById("intro");
+
+  intro.style.transition =
+    "opacity .8s ease";
+
+  intro.style.opacity = "0";
+
+  cancelAnimationFrame(animId);
+
+  setTimeout(() => {
+
+    window.location.href =
+      "main.html";
+
+  }, 800);
+}
+    </script>
 </body>
-
 </html>
+    
