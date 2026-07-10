@@ -19,8 +19,9 @@ const countdown = setInterval(() => {
     if (now >= weddingDate && now < endWeddingDay) {
         document.getElementById("countdown").style.display = "none";
         document.getElementById("date-box").style.display = "none";
+        document.getElementById("title").style.display = "none";
 
-        document.getElementById("special-message").innerHTML = "✨ 𝓣𝓱𝓲𝓼 𝓓𝓪𝔂❤️ ✨";
+        document.getElementById("special-message").innerHTML = "𝓣𝓱𝓲𝓼 𝓓𝓪𝔂❤️";
         return;
     }
 
@@ -30,7 +31,7 @@ const countdown = setInterval(() => {
         document.getElementById("countdown").style.display = "none";
         document.getElementById("date-box").style.display = "flex";
 
-        document.getElementById("special-message").innerHTML = "Wedding Date";
+        document.getElementById("title").innerHTML = "Wedding Date";
 
         document.getElementById("d-day").innerHTML = "04";
         document.getElementById("d-month").innerHTML = "08";
