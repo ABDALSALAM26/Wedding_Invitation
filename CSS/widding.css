@@ -81,7 +81,7 @@ body {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  animation: rotateBorder 1.75s ease-in-out 1;
+  animation: rotateBorder 1.75s ease-in-out 1.5;
 }
 
 @keyframes rotateBorder {
