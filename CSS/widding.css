@@ -37,20 +37,21 @@ body {
   background-position: center;
   background-repeat: repeat;
   border-radius: 50%;
-  border: 8px, double, gainsboro;
+  border: 8px double gainsboro;
   overflow: visible;
   box-shadow:
     0 0 0 8px rgba(255, 255, 255, 0.6),
     0 12px 35px rgba(0, 0, 0, .15),
     0 0 25px rgba(214, 194, 165, 0.4);
-
-
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  transition: all 0.4s ease;
   animation: fadeScale 1.5s ease;
+  
 }
+
 
 
 
@@ -81,7 +82,7 @@ body {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-    border: 3px solid transparent;
+  border: 3px solid transparent;
     border-top-color: #7e8512;
     border-bottom-color: #4e5307;
   animation: rotateBorder 1.75s ease-in-out 1;
@@ -96,7 +97,6 @@ body {
 
   to {
     transform: rotate(360deg);
-    border: 0px;
 
   }
 }
