@@ -81,7 +81,7 @@ body {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  animation: rotateBorder 1.75s ease-in-out 1.5;
+  animation: rotateBorder 1.75s ease-in-out 1;
 }
 
 @keyframes rotateBorder {
@@ -91,7 +91,7 @@ body {
 
   }
 
-  50% {
+  80% {
     border: 3px solid transparent;
     border-top-color: #7e8512;
     border-bottom-color: #4e5307;
