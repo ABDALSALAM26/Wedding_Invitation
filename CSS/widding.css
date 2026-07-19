@@ -36,7 +36,7 @@ body {
   background-size: auto;
   background-position: center;
   background-repeat: repeat;
-  border-radius: 30%;
+  border-radius: 50%;
   border: 8px, double, gainsboro;
   overflow: visible;
   box-shadow:
@@ -81,23 +81,20 @@ body {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #7e8512;
+    border-bottom-color: #4e5307;
   animation: rotateBorder 1.75s ease-in-out 1;
 }
 
 @keyframes rotateBorder {
-  0% {
+  from{
     transform: rotate(0deg);
     border: 10px dotted;
 
   }
 
-  80% {
-    border: 3px solid transparent;
-    border-top-color: #7e8512;
-    border-bottom-color: #4e5307;
-  }
-
-  100% {
+  to {
     transform: rotate(360deg);
     border: 0px;
 
