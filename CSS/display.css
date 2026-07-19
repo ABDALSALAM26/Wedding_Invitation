@@ -1,3 +1,10 @@
+html[dir="rtl"] {
+    direction: rtl;
+}
+
+html[dir="ltr"] {
+    direction: ltr;
+}
 .container {
     max-width: 850px;
     background-color: rgba(255, 255, 255, 0.92);
