@@ -92,7 +92,7 @@ if (locationIcon2) {
         locationIcon2.classList.add("location-opened");
 
         window.open(
-            "https://www.google.com/maps?q=30.541998,31.693445",
+            "https://www.google.com/maps?q=30.59697, 31.46964",
             "_blank"
         );
     });
