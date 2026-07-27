@@ -70,7 +70,7 @@ if (locationIcon) {
     sessionStorage.setItem("hannaOpened", "true");
     locationIcon.classList.add("location-opened");
 
-    window.open("https://www.google.com/maps?q=30.541998,31.693445", "_blank");
+    window.open("https://www.google.com/maps?q=30.535076,31.717627", "_blank");
   });
 }
 
